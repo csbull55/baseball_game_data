@@ -1,10 +1,4 @@
 import pandas as pd
+from src.baseballdata import baseball_data
 
-head = list(range(1, 162))
-df = pd.read_csv(r"F:\Projects\Programming_projects\baseball_stats\game_data\data\game_data.csv")
-
-print(df.head())
-
-attend_avg = df['18'].mean()
-
-print(attend_avg)
+print(baseball_data().head())
