@@ -5,8 +5,8 @@ from src.baseballdata import baseball_data_raw
 df = baseball_data_raw()
 
 
-class Games:
-    def __init__(self, df):
+class Allteams:
+    def __init__(self):
         self.df = df
 
     def basic_info(self):
@@ -16,6 +16,7 @@ class Games:
         avg_duration = round(df['Duration'].mean(), 2)
         avg_length_inn = round(df['LengthInOuts'].mean(), 2) / 6
 
+        # which stats to return
         stats = [
             num_of_games,
             num_of_teams,
@@ -23,6 +24,7 @@ class Games:
             avg_length_inn,
         ]
 
+        # prints them line by line
         info = '\n'.join(map(str, stats))
         return info
 
@@ -40,7 +42,14 @@ class Games:
         return info
 
 
-gm2018 = Games(df)
+gm2018 = Allteams()
 
 print(gm2018.basic_info())
 print(gm2018.score_info())
+
+df = df[(df['HomeTeam'] == 'ATL') | (df['VisitingTeam'] == 'ATL')]
+
+alt2018 = Allteams()
+
+print('\n')
+print(alt2018.basic_info())
