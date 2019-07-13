@@ -42,14 +42,19 @@ class Allteams:
         return info
 
 
-gm2018 = Allteams()
+def team_data(tmdf):
+    num_of_games = len(tmdf['Date'])
+    return num_of_games
 
-print(gm2018.basic_info())
-print(gm2018.score_info())
 
-df = df[(df['HomeTeam'] == 'ATL') | (df['VisitingTeam'] == 'ATL')]
+def game_length(tmdf):
+    game_ln = round(tmdf['Duration'].mean(), 2)
+    return game_ln
 
-alt2018 = Allteams()
+
+df_alt = df[(df['HomeTeam'] == 'ATL') | (df['VisitingTeam'] == 'ATL')]
 
 print('\n')
-print(alt2018.basic_info())
+
+print(team_data(df_alt))
+print(game_length(df_alt) / 60)
